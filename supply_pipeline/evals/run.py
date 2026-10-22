@@ -3,6 +3,7 @@
   --replay FILE   answer from a recorded run (no API call, $0)
   --live          call the real model (requirements-live.txt, ANTHROPIC_API_KEY, LLM_MODEL
                   optional); capped at policy.MAX_USD_PER_RUN
+  --record FILE   with --live, also write each answer to FILE so later runs can --replay it
 
 Writes <out>/eval_<surface>.md and .json. Exit code: 0 pass, 1 business_miss or hard
 regression, 2 setup error.
@@ -17,7 +18,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ..llm.budget import BudgetGuard
-from ..llm.provider import AnthropicProvider, CallLog, ReplayProvider
+from ..llm.provider import AnthropicProvider, CallLog, RecordingProvider, ReplayProvider
 from . import corpus
 from .policy import CLASSIFIER_SURFACES, MAX_USD_PER_RUN
 from .report import process_classifier_run, render_markdown
@@ -32,10 +33,15 @@ def main(argv: list[str] | None = None) -> int:
     src = ap.add_mutually_exclusive_group(required=True)
     src.add_argument("--replay", type=Path)
     src.add_argument("--live", action="store_true")
+    ap.add_argument("--record", type=Path, help="with --live: write a replayable recording here")
     ap.add_argument("--out", type=Path, default=Path("reports"))
     ap.add_argument("--run-at", help="ISO timestamp to stamp the report with (reproducible output)")
     ap.add_argument("--call-log", type=Path, default=Path("data/local/llm_calls.jsonl"))
     args = ap.parse_args(argv)
+    if args.record and not args.live:
+        ap.error("--record needs --live")
+    if args.record and args.record.exists():
+        ap.error(f"{args.record} exists; record into a new file")
 
     golden_surface = CLASSIFIER_SURFACES[args.surface].get("golden_surface", args.surface)
     goldens = corpus.load_classifier_goldens(golden_surface)
@@ -51,6 +57,9 @@ def main(argv: list[str] | None = None) -> int:
         note = f"Replayed from `{args.replay.name}`: recorded model outputs, no API call."
     else:
         provider = AnthropicProvider(model=model, guard=BudgetGuard(max_run_usd=MAX_USD_PER_RUN), log=log)
+        if args.record:
+            provider = RecordingProvider(provider, args.record)
+            note = f"Live run, recorded to `{args.record.name}`."
 
     summary = run_classifier_against_goldens(args.surface, goldens, provider)
     run_at = datetime.fromisoformat(args.run_at) if args.run_at else datetime.now(UTC)

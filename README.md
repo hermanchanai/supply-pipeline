@@ -66,12 +66,13 @@ The first command writes the page's JSON from `sample/`. The second re-scores th
 
 ## How it's tested
 
-`pytest -p no:cacheprovider --disable-socket` runs 89 tests with every network socket blocked (CI does the same on Python 3.11 and 3.12, plus `ruff`). Postgres runs on a local Unix socket, which `pyproject.toml` allows.
+`pytest -p no:cacheprovider --disable-socket` runs 92 tests with every network socket blocked (CI does the same on Python 3.11 and 3.12, plus `ruff`). Postgres runs on a local Unix socket, which `pyproject.toml` allows.
 
 - **Readers:** each of the eight runs against responses recorded from the real source on 2026-10-21 and trimmed (see `tests/fixtures/README.md`): paging, header-aware parsing, what happens when a page fails or the source changes shape, and what lands in the table. The browser reader's parsing is tested on a recorded results page; driving Chromium needs a live portal and is not run offline.
 - **Store:** upsert rules, including that a re-sweep from a thinner source never wipes an enriched value and that coordinates only move as a pair.
 - **Builder:** it refuses an untagged feed, an unknown metro or a mislabelled example; on the sample its output has the same keys as the live page's JSON at every level, the same feed counts per method and per metro, and is identical run to run.
-- **Eval:** the Phoenix golden set replayed through the classifier code and scored by the report reproduces the published row: 65 filings, 84.6% exact (55), 86.2% right business bucket (56), 7 rent/sale errors.
+- **Eval:** the Phoenix golden set replayed through the classifier code and scored by the report reproduces the published row: 65 filings, 84.6% exact (55), 86.2% right business bucket (56), 7 rent/sale errors. The Atlanta set replays a run recorded on the public inputs: 93 filings, 77.4% exact (72), 81.7% right bucket (76), 11 rent/sale errors (`reports/eval_epd_classify_dwelling.md`).
+- **LLM recording:** a live run with `--record` writes a file that `--replay` answers from, and the run reports its real spend.
 - **LLM wrapper:** an unpriced model is refused, a call over the per-call or per-run cap never fires, and every call is logged.
 
 ## Design decisions
@@ -87,7 +88,7 @@ The first command writes the page's JSON from `sample/`. The second re-scores th
 - **The production database and the 441,243 records counted on the page.** Only the registry, per-feed counts, the multifamily layer and small slices of public-record rows are bundled (`sample/README.md`).
 - **The 246 other feeds' readers**, the weekly scheduler, deploy configuration and hosting. The eight here are the page's example feed for each method.
 - **People's contact details.** Applicant and reviewer names, emails, phones and mailing addresses are never read into a row; the Nashville caption's applicant/owner clause is redacted; owner names, emails and notes are dropped from the Atlanta goldens.
-- **The Atlanta classifier score.** Production's Atlanta classifier also reads owner names and email domains, which the public goldens cannot carry, so its published 82.8% cannot be reproduced from these inputs. The goldens, the classifier and the developer lexicon are here; re-scoring needs a paid run (`--live`).
+- **Atlanta's production inputs.** Production's Atlanta classifier also reads owner names and email domains, which the public goldens cannot carry. It scored 82.8% exact with them; on the public inputs it scores 77.4%, and that is the number this repo reproduces (`data/README.md`).
 - **Data licensed from commercial vendors.** None is used by these readers or bundled.
 - **The model-cost table on the page.** It comes from production's call log; the wrapper here writes the same kind of log locally (`data/local/llm_calls.jsonl`).
 

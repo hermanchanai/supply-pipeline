@@ -1,0 +1,191 @@
+{
+  "surface": "epd_classify_dwelling",
+  "model": "claude-haiku-4-5",
+  "provider": "replay",
+  "run_at": "2026-10-21T00:00:00+00:00",
+  "cases_total": 93,
+  "cases_passed": 72,
+  "pass_rate": 0.7742,
+  "bucket_passed": 76,
+  "bucket_pass_rate": 0.8172,
+  "business_miss": 11,
+  "severity_counts": {
+    "pass": 72,
+    "cosmetic_miss": 4,
+    "business_miss": 11,
+    "overcommit": 5,
+    "abstain_miss": 1,
+    "validation_fail": 0
+  },
+  "class_pass_rates": {
+    "mixed": 0.0,
+    "multifamily": 0.6875,
+    "single_family": 0.8571,
+    "townhome": 0.9474,
+    "unknown": 0.1667
+  },
+  "baseline_pass_rate": 0.828,
+  "regression_detected": true,
+  "alert_severity": "critical",
+  "alert_message": "pass rate dropped 5.4% (baseline 82.8% -> 77.4%); 11 business_miss (crosses for_sale<->rental)",
+  "exit_code": 1,
+  "cost_usd": 0.0,
+  "site_row": {
+    "metro": "Atlanta",
+    "n": 93,
+    "exact": "77.4%",
+    "exactN": 72,
+    "bucket": "81.7%",
+    "bucketN": 76,
+    "miss": 11
+  },
+  "failures": [
+    {
+      "severity": "business_miss",
+      "input_row_id": "566055",
+      "expected": "multifamily",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "829076",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "845636",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "880679",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "891034",
+      "expected": "mixed",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "903558",
+      "expected": "mixed",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "944561",
+      "expected": "multifamily",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "967012",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "981944",
+      "expected": "mixed",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "985054",
+      "expected": "multifamily",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "995305",
+      "expected": "multifamily",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "898780",
+      "expected": "unknown",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "936512",
+      "expected": "unknown",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "953782",
+      "expected": "unknown",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "963274",
+      "expected": "unknown",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "986517",
+      "expected": "unknown",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "abstain_miss",
+      "input_row_id": "890979",
+      "expected": "multifamily",
+      "actual": "unknown",
+      "error": null
+    },
+    {
+      "severity": "cosmetic_miss",
+      "input_row_id": "1001367",
+      "expected": "single_family",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "cosmetic_miss",
+      "input_row_id": "866522",
+      "expected": "single_family",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "cosmetic_miss",
+      "input_row_id": "915864",
+      "expected": "single_family",
+      "actual": "townhome",
+      "error": null
+    },
+    {
+      "severity": "cosmetic_miss",
+      "input_row_id": "976656",
+      "expected": "townhome",
+      "actual": "single_family",
+      "error": null
+    }
+  ]
+}

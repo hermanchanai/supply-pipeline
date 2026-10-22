@@ -12,6 +12,7 @@ from supply_pipeline.llm.budget import BudgetExceeded, BudgetGuard
 from supply_pipeline.llm.provider import (
     AnthropicProvider,
     CallLog,
+    RecordingProvider,
     ReplayMiss,
     ReplayProvider,
     Request,
@@ -88,3 +89,26 @@ def test_replay_answers_only_the_exact_input(tmp_path):
     assert p.complete(Request("s", "hello", 10, "claude-haiku-4-5")).text == "townhome"
     with pytest.raises(ReplayMiss):
         p.complete(Request("s", "hello ", 10, "claude-haiku-4-5"))
+
+
+def test_recording_round_trips_through_replay(tmp_path):
+    client, calls = fake_client(text="single_family")
+    rec = tmp_path / "rec.jsonl"
+    live = RecordingProvider(AnthropicProvider(model="claude-haiku-4-5", client=client), rec)
+    assert live.complete(Request("s", "row 1", 10, "claude-haiku-4-5")).text == "single_family"
+    assert len(calls) == 1
+    replay = ReplayProvider(rec, model="claude-haiku-4-5")
+    assert replay.complete(Request("s", "row 1", 10, "claude-haiku-4-5")).text == "single_family"
+    with pytest.raises(ReplayMiss):
+        replay.complete(Request("s", "row 2", 10, "claude-haiku-4-5"))
+
+
+def test_recorded_live_run_reports_its_spend(tmp_path):
+    from supply_pipeline.evals import corpus
+    from supply_pipeline.evals.runner import run_classifier_against_goldens
+    client, _ = fake_client(text="commercial", in_tok=1000, out_tok=2)
+    live = RecordingProvider(AnthropicProvider(model="claude-haiku-4-5", client=client),
+                             tmp_path / "rec.jsonl")
+    goldens = corpus.load_classifier_goldens("azdeq_classify")[:2]
+    summary = run_classifier_against_goldens("azdeq_classify", goldens, live)
+    assert summary.cost_usd == pytest.approx(2 * (1000 * 1 + 2 * 5) / 1e6)

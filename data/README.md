@@ -38,6 +38,13 @@ on the 65 Phoenix goldens, one line per golden, keyed by a SHA-256 of the exact 
 the classifier sends. `ReplayProvider` answers from it, so the eval re-scores for $0 and a
 changed prompt input fails loudly instead of drifting.
 
+`epd_classify_dwelling_haiku-4-5_2026-10-21.jsonl` is a live run of the same model on the 93
+Atlanta goldens **as published here**, without the owner names and email domains production
+also sends. It was recorded with `--live --record` (93 calls, $0.086) so the Atlanta score
+re-scores offline too: 77.4% exact (72), 81.7% right business bucket (76), 11 rent/sale
+errors, against 82.8% exact in production with the full inputs. The gap is the value of the
+owner and email-domain signals, which cannot be published.
+
 ## Other files
 
 - `atlanta_developer_lexicon.json`: developer -> typical dwelling type, from county permits

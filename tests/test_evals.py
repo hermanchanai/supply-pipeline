@@ -63,6 +63,21 @@ def test_phoenix_replay_reproduces_the_published_row():
                                  "abstain_miss": 1, "validation_fail": 0}
 
 
+def test_atlanta_replay_reproduces_the_public_input_score():
+    """Atlanta on the public inputs (no owner names or email domains), recorded 2026-10-21."""
+    goldens = corpus.load_classifier_goldens("epd_classify_dwelling")
+    assert len(goldens) == 93
+    rec = ROOT / "data/recorded/epd_classify_dwelling_haiku-4-5_2026-10-21.jsonl"
+    s = runner.run_classifier_against_goldens("epd_classify_dwelling", goldens,
+                                              ReplayProvider(rec, model="claude-haiku-4-5"))
+    assert all(r.error is None for r in s.results)
+    p = report.process_classifier_run(s, baseline=corpus.baseline_for("epd_classify_dwelling"),
+                                      today=date(2026, 10, 21))
+    assert p.site_row("Atlanta") == {"metro": "Atlanta", "n": 93, "exact": "77.4%", "exactN": 72,
+                                     "bucket": "81.7%", "bucketN": 76, "miss": 11}
+    assert p.regression_detected                 # below the 82.8% production baseline, by design
+
+
 def test_inside_calibration_a_business_miss_only_warns():
     goldens = corpus.load_classifier_goldens("azdeq_classify")
     s = runner.run_classifier_against_goldens("azdeq_classify", goldens,

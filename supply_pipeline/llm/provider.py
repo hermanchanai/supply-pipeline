@@ -5,6 +5,8 @@ vendor SDK. Three providers:
   ReplayProvider    -- answers from a recorded file, keyed by a hash of the exact user
                        message, so a re-score costs nothing and cannot drift: a changed
                        prompt input misses the recording and fails loudly.
+  RecordingProvider -- wraps a live provider and appends each answer to a file in the
+                       format ReplayProvider reads.
   (tests use small fakes with the same .complete signature)
 
 Every completed call goes through `CallLog.write` and `BudgetGuard.record`.
@@ -151,4 +153,24 @@ class AnthropicProvider:
         c = Completion(text=text, usage=usage, latency_ms=latency)
         self.guard.record(cost or 0.0)
         self.log.write(provider=self.name, req=req, feature=feature, c=c, cost=cost)
+        return c
+
+
+class RecordingProvider:
+    """Pass-through to a live provider that writes each answer as a replayable line."""
+
+    def __init__(self, inner, path: Path):
+        self.inner = inner
+        self.model = inner.model
+        self.guard = getattr(inner, "guard", None)   # the runner reads spend from here
+        self.name = f"{inner.name}+record"
+        self.path = Path(path)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+
+    def complete(self, req: Request, *, feature: str | None = None, metadata: dict | None = None) -> Completion:
+        c = self.inner.complete(req, feature=feature, metadata=metadata)
+        row = {"user_sha256": user_hash(req.user), "output": c.text, "model": req.model,
+               "input_tokens": c.usage.input_tokens, "output_tokens": c.usage.output_tokens}
+        with self.path.open("a") as f:
+            f.write(json.dumps(row) + "\n")
         return c
