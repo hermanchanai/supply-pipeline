@@ -93,7 +93,5 @@ def test_goldens_carry_only_allowed_inputs_and_a_label_method():
         for r in rows:
             assert set(r["input_payload"]) <= allowed
             assert not re.search(r"[\w.+-]+@[\w-]+\.[a-z]{2,}", json.dumps(r), re.I)   # no email address
-            assert r["label_method"] in ("hand_web_research", "llm_web_research")
+            assert r["label_method"] == "llm_web_research"
             assert r["labeled_by_db"]
-    at = [json.loads(x) for x in (ROOT / "data/goldens/epd_classify_dwelling.jsonl").read_text().splitlines()]
-    assert sum(r["label_method"] == "hand_web_research" for r in at) == 50

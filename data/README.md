@@ -12,17 +12,14 @@ line: the classifier input (`input_payload`), the expected class, and how the la
 
 ### How the labels were made (`label_method`)
 
-Two methods, both web research and neither one ever shown the classifier's answers:
+Every row is `llm_web_research`: labelled by a separate language-model run with web
+search, never shown the classifier's answers. The methodology was set and directed by me:
+for each filing, search the developer and read the filing, the developer's own site and
+the county's permits, then record the dwelling type with the evidence. I labelled the
+earliest filings the same way by hand before handing the method to a model.
 
-- `hand_web_research`: labelled by hand. For each filing I searched the developer and read
-  the filing, the developer's own site and the county's permits. These are the first 50
-  Atlanta filings.
-- `llm_web_research`: labelled by a separate language-model run that followed the same
-  web-research method. These are the other 43 Atlanta filings and all 65 Phoenix filings.
-
-`labeled_by_db` keeps the value the production database recorded, verbatim. That column
-names only the model runs, including for the 50 hand-labelled filings, which is why both
-columns are here.
+`labeled_by_db` keeps the value the production database recorded, verbatim (for example
+`opus4.8+websearch (herman-directed 2026-06-02)` for the first 50 Atlanta rows).
 
 ### What was removed
 
