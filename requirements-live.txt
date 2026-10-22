@@ -1,0 +1,4 @@
+# Only for live runs against the real portals and a real model (not needed for tests or the sample).
+-r requirements.txt
+anthropic==0.88.0
+playwright==1.59.0

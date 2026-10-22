@@ -1,0 +1,7 @@
+# Runtime dependencies for the offline pipeline (readers, store, builder, eval replay).
+beautifulsoup4==4.15.0
+openpyxl==3.1.5
+pgserver==0.1.4
+psycopg2-binary==2.9.13
+pypdf==6.21.2
+requests==2.34.2

@@ -1,0 +1,20 @@
+[project]
+name = "supply-pipeline"
+version = "1.0.0"
+description = "Readers, store, snapshot builder and classifier evaluation for a multi-metro housing supply pipeline."
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = [".venv", "build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# pgserver runs Postgres on a local Unix socket; every network (TCP) socket stays blocked.
+addopts = "--allow-unix-socket"

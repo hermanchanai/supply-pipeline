@@ -1,0 +1,12 @@
+{
+  "frozen_at": "2026-10-21T12:45:00+00:00",
+  "as_of": "2026-10-21",
+  "registry_as_of": "2026-09-30T17:29:33+00:00",
+  "notes": [
+    "Registry rows: the tracked feeds that existed when the public page's snapshot was generated (2026-09-30).",
+    "Coverage counts (row_count, last_ingested, latest_data): the production coverage table as it stood on 2026-10-21. Production keeps no history of this table, so the 2026-09-30 counts behind the page cannot be recovered.",
+    "layers.mf_projects: every active multifamily/townhome permit-layer project on 2026-10-21 (id, metro, product, stage, units only).",
+    "layers.pipeline_unified, layers.sfd_projects, layers.entitlement_other: the candidate rows the per-metro project sample is drawn from on 2026-10-21. Three rows were dropped by hand (a name matching the repo's scrub denylist and two that read as a person's residence).",
+    "Example-feed tables: ten public-record rows each, with contact fields removed and the Nashville planning captions' requested-by clause redacted."
+  ]
+}

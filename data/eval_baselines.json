@@ -1,0 +1,5 @@
+{
+  "_doc": "Strict pass rate of the June 2026 baseline run per surface. A later run that drops 2 points warns; 5 points fails.",
+  "azdeq_classify": {"pass_rate": 0.8462, "measured": "2026-06-03", "model": "claude-haiku-4-5"},
+  "epd_classify_dwelling": {"pass_rate": 0.828, "measured": "2026-06-03", "model": "claude-haiku-4-5"}
+}

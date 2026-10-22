@@ -1,0 +1,1713 @@
+{
+  "generated_at": "2026-09-30T17:29:33+00:00",
+  "coverage_refreshed_at": "2026-09-30T12:00:00.323894+00:00",
+  "headline": {
+    "metros": 9,
+    "tracked_feeds": 254,
+    "source_records": 441243,
+    "fresh_feeds": 212,
+    "fresh_days": 8,
+    "entitlement_cases": 115834,
+    "mf_projects": 2498,
+    "mf_units": 187468
+  },
+  "metros": {
+    "ATL": "Atlanta, GA",
+    "AUS": "Austin, TX",
+    "CLT": "Charlotte, NC",
+    "HOU": "Houston, TX",
+    "HSV": "Huntsville, AL",
+    "LAS": "Las Vegas, NV",
+    "NSH": "Nashville, TN",
+    "PHX": "Phoenix, AZ",
+    "TPA": "Tampa, FL"
+  },
+  "methods": [
+    {
+      "method": "arcgis",
+      "label": "GIS map service",
+      "note": "A county or city ArcGIS layer queried like an API. Structured and cheap; breaks loudly when a layer is renamed.",
+      "feeds": 93,
+      "metros": 9,
+      "records": 218455,
+      "example": {
+        "market": "NSH",
+        "what": "Davidson County building permits issued, from Metro Nashville's ArcGIS hub",
+        "records": 33291
+      }
+    },
+    {
+      "method": "portal_json",
+      "label": "Permit-portal JSON",
+      "note": "The JSON a permit or agenda portal feeds its own search page. One reader per vendor covers every jurisdiction on that software.",
+      "feeds": 88,
+      "metros": 9,
+      "records": 75024,
+      "example": {
+        "market": "LAS",
+        "what": "Henderson entitlement plans, from the city's Tyler EnerGov portal",
+        "records": 8864
+      }
+    },
+    {
+      "method": "html_scrape",
+      "label": "HTML page scrape",
+      "note": "Server-rendered search pages, parsed field by field. The most layout-sensitive of the structured methods.",
+      "feeds": 22,
+      "metros": 6,
+      "records": 49209,
+      "example": {
+        "market": "HOU",
+        "what": "Texas construction stormwater notices of intent, from TCEQ's search pages",
+        "records": 18236
+      }
+    },
+    {
+      "method": "pdf",
+      "label": "PDF documents",
+      "note": "Agendas, weekly lists and public reports. Text is extracted, and a language model reads what rules cannot.",
+      "feeds": 17,
+      "metros": 5,
+      "records": 27808,
+      "example": {
+        "market": "PHX",
+        "what": "Arizona subdivision public reports: a CSV index plus one PDF per report",
+        "records": 25735
+      }
+    },
+    {
+      "method": "browser",
+      "label": "Browser automation",
+      "note": "Portals that only work in a real browser, driven headless. Slowest and most fragile, so it is the last resort.",
+      "feeds": 12,
+      "metros": 3,
+      "records": 2603,
+      "example": {
+        "market": "LAS",
+        "what": "Clark County planning cases, from its Accela citizen portal",
+        "records": 592
+      }
+    },
+    {
+      "method": "open_data_api",
+      "label": "Open-data API",
+      "note": "A published open-data API with documented fields. The easiest feeds to keep healthy.",
+      "feeds": 11,
+      "metros": 5,
+      "records": 31118,
+      "example": {
+        "market": "AUS",
+        "what": "City of Austin subdivision review cases, from its Socrata open-data API",
+        "records": 5707
+      }
+    },
+    {
+      "method": "spreadsheet",
+      "label": "Spreadsheet download",
+      "note": "An xlsx or csv file published on a schedule. One request, then a column mapping that must survive format changes.",
+      "feeds": 8,
+      "metros": 4,
+      "records": 36233,
+      "example": {
+        "market": "CLT",
+        "what": "North Carolina construction stormwater permits, one xlsx from NC DEQ",
+        "records": 14539
+      }
+    },
+    {
+      "method": "derived",
+      "label": "Derived view",
+      "note": "Not a download: a filtered view over a table another feed already loads.",
+      "feeds": 3,
+      "metros": 2,
+      "records": 793,
+      "example": {
+        "market": "NSH",
+        "what": "Nashville planning cases filtered to rezonings, plats and PUDs",
+        "records": 531
+      }
+    }
+  ],
+  "markets": [
+    {
+      "market": "ATL",
+      "feeds": 57,
+      "early": 10,
+      "entitlement": 30,
+      "late": 17,
+      "records": 37748,
+      "fresh": 38,
+      "methods": {
+        "arcgis": 16,
+        "portal_json": 11,
+        "html_scrape": 14,
+        "pdf": 10,
+        "browser": 6,
+        "open_data_api": 0,
+        "spreadsheet": 0,
+        "derived": 0
+      },
+      "entitlement_cases": 10944,
+      "mf_projects": 535,
+      "mf_units": 45027
+    },
+    {
+      "market": "AUS",
+      "feeds": 43,
+      "early": 6,
+      "entitlement": 11,
+      "late": 26,
+      "records": 38031,
+      "fresh": 40,
+      "methods": {
+        "arcgis": 16,
+        "portal_json": 19,
+        "html_scrape": 1,
+        "pdf": 0,
+        "browser": 0,
+        "open_data_api": 7,
+        "spreadsheet": 0,
+        "derived": 0
+      },
+      "entitlement_cases": 6223,
+      "mf_projects": 636,
+      "mf_units": 90531
+    },
+    {
+      "market": "TPA",
+      "feeds": 32,
+      "early": 3,
+      "entitlement": 17,
+      "late": 12,
+      "records": 46430,
+      "fresh": 27,
+      "methods": {
+        "arcgis": 18,
+        "portal_json": 10,
+        "html_scrape": 1,
+        "pdf": 1,
+        "browser": 0,
+        "open_data_api": 0,
+        "spreadsheet": 2,
+        "derived": 0
+      },
+      "entitlement_cases": 15058,
+      "mf_projects": 239,
+      "mf_units": 8804
+    },
+    {
+      "market": "HOU",
+      "feeds": 29,
+      "early": 5,
+      "entitlement": 12,
+      "late": 12,
+      "records": 61114,
+      "fresh": 24,
+      "methods": {
+        "arcgis": 2,
+        "portal_json": 19,
+        "html_scrape": 3,
+        "pdf": 0,
+        "browser": 0,
+        "open_data_api": 1,
+        "spreadsheet": 4,
+        "derived": 0
+      },
+      "entitlement_cases": 6345,
+      "mf_projects": 51,
+      "mf_units": 3178
+    },
+    {
+      "market": "NSH",
+      "feeds": 23,
+      "early": 5,
+      "entitlement": 10,
+      "late": 8,
+      "records": 90256,
+      "fresh": 22,
+      "methods": {
+        "arcgis": 9,
+        "portal_json": 8,
+        "html_scrape": 0,
+        "pdf": 2,
+        "browser": 0,
+        "open_data_api": 1,
+        "spreadsheet": 1,
+        "derived": 2
+      },
+      "entitlement_cases": 13567,
+      "mf_projects": 50,
+      "mf_units": 963
+    },
+    {
+      "market": "PHX",
+      "feeds": 23,
+      "early": 3,
+      "entitlement": 12,
+      "late": 8,
+      "records": 82031,
+      "fresh": 21,
+      "methods": {
+        "arcgis": 13,
+        "portal_json": 6,
+        "html_scrape": 2,
+        "pdf": 1,
+        "browser": 0,
+        "open_data_api": 1,
+        "spreadsheet": 0,
+        "derived": 0
+      },
+      "entitlement_cases": 26642,
+      "mf_projects": 112,
+      "mf_units": 18486
+    },
+    {
+      "market": "LAS",
+      "feeds": 19,
+      "early": 5,
+      "entitlement": 6,
+      "late": 8,
+      "records": 31391,
+      "fresh": 17,
+      "methods": {
+        "arcgis": 4,
+        "portal_json": 10,
+        "html_scrape": 0,
+        "pdf": 0,
+        "browser": 4,
+        "open_data_api": 1,
+        "spreadsheet": 0,
+        "derived": 0
+      },
+      "entitlement_cases": 24744,
+      "mf_projects": 193,
+      "mf_units": 5211
+    },
+    {
+      "market": "CLT",
+      "feeds": 18,
+      "early": 3,
+      "entitlement": 10,
+      "late": 5,
+      "records": 43543,
+      "fresh": 18,
+      "methods": {
+        "arcgis": 11,
+        "portal_json": 4,
+        "html_scrape": 0,
+        "pdf": 0,
+        "browser": 2,
+        "open_data_api": 0,
+        "spreadsheet": 1,
+        "derived": 0
+      },
+      "entitlement_cases": 9343,
+      "mf_projects": 675,
+      "mf_units": 14173
+    },
+    {
+      "market": "HSV",
+      "feeds": 10,
+      "early": 2,
+      "entitlement": 7,
+      "late": 1,
+      "records": 10699,
+      "fresh": 5,
+      "methods": {
+        "arcgis": 4,
+        "portal_json": 1,
+        "html_scrape": 1,
+        "pdf": 3,
+        "browser": 0,
+        "open_data_api": 0,
+        "spreadsheet": 0,
+        "derived": 1
+      },
+      "entitlement_cases": 2968,
+      "mf_projects": 7,
+      "mf_units": 1095
+    }
+  ],
+  "freshness": [
+    {
+      "bucket": "Within a day",
+      "feeds": 1,
+      "early": 0,
+      "entitlement": 1,
+      "late": 0
+    },
+    {
+      "bucket": "2–8 days",
+      "feeds": 211,
+      "early": 31,
+      "entitlement": 96,
+      "late": 84
+    },
+    {
+      "bucket": "9–30 days",
+      "feeds": 8,
+      "early": 3,
+      "entitlement": 3,
+      "late": 2
+    },
+    {
+      "bucket": "Over 30 days",
+      "feeds": 24,
+      "early": 6,
+      "entitlement": 11,
+      "late": 7
+    },
+    {
+      "bucket": "No date to judge by",
+      "feeds": 10,
+      "early": 2,
+      "entitlement": 4,
+      "late": 4
+    }
+  ],
+  "entitlement_types": [
+    {
+      "stage": "rezoning",
+      "cases": 31964,
+      "with_units": 3989,
+      "label": "Rezoning"
+    },
+    {
+      "stage": "plat",
+      "cases": 24838,
+      "with_units": 6885,
+      "label": "Plat"
+    },
+    {
+      "stage": "dev_project",
+      "cases": 17641,
+      "with_units": 5451,
+      "label": "Development project"
+    },
+    {
+      "stage": "site_plan",
+      "cases": 12532,
+      "with_units": 2332,
+      "label": "Site plan"
+    },
+    {
+      "stage": "sup",
+      "cases": 6529,
+      "with_units": 726,
+      "label": "Special use permit"
+    },
+    {
+      "stage": "pre_application",
+      "cases": 6046,
+      "with_units": 2237,
+      "label": "Pre-application"
+    },
+    {
+      "stage": "variance",
+      "cases": 3146,
+      "with_units": 1372,
+      "label": "Variance"
+    },
+    {
+      "stage": "design_review",
+      "cases": 2797,
+      "with_units": 0,
+      "label": "Design review"
+    },
+    {
+      "stage": "other",
+      "label": "Other filing types",
+      "cases": 10341,
+      "with_units": 1378
+    }
+  ],
+  "permit_stages": {
+    "planned": "Planned",
+    "permitted_pending": "Permit pending",
+    "permitted": "Permitted",
+    "unknown": "Stage unknown"
+  },
+  "permit_products": [
+    {
+      "product": "Apartments",
+      "projects": 1463,
+      "units": 165054,
+      "planned": 255,
+      "permitted_pending": 34,
+      "permitted": 690,
+      "unknown": 484
+    },
+    {
+      "product": "Townhomes",
+      "projects": 617,
+      "units": 4258,
+      "planned": 76,
+      "permitted_pending": 13,
+      "permitted": 504,
+      "unknown": 24
+    },
+    {
+      "product": "Duplex to fourplex",
+      "projects": 150,
+      "units": 322,
+      "planned": 13,
+      "permitted_pending": 0,
+      "permitted": 73,
+      "unknown": 64
+    },
+    {
+      "product": "Condos",
+      "projects": 120,
+      "units": 4274,
+      "planned": 14,
+      "permitted_pending": 1,
+      "permitted": 21,
+      "unknown": 84
+    },
+    {
+      "product": "Other / unclassified",
+      "projects": 148,
+      "units": 13560,
+      "planned": 21,
+      "permitted_pending": 3,
+      "permitted": 93,
+      "unknown": 31
+    }
+  ],
+  "sample_per_market": 15,
+  "samples": {
+    "ATL": [
+      {
+        "name": "The 350",
+        "place": "Atlanta",
+        "product": "MF",
+        "stage": "Filed",
+        "units": 160,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "The Enclave at Goodwin",
+        "place": "Austell",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 40,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Alta Newnan McIntosh",
+        "place": "Newnan",
+        "product": "MF",
+        "stage": "Filed",
+        "units": 263,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Sugar Pike Estates",
+        "place": "Canton",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 68,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Stilesboro Enclave",
+        "place": "Kennesaw",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 27,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Clairmont/Morning Song",
+        "place": "Newnan",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 139,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Garner Preserve",
+        "place": "Lilburn",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 204,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "High Shoals Road Tract",
+        "place": "Dallas",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 173,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Kimberly Manor",
+        "place": "Atlanta",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 98,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "CONNS CREE ESTATES",
+        "place": "Ball Ground",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 17,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "HWY 42 Townhomes",
+        "place": "Stockbridge",
+        "product": "TH",
+        "stage": "Filed",
+        "units": 108,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "THE MEADOWS AT GOOD HOPE",
+        "place": "Good Hope",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 66,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "NATUREWALK UNIT 4 PHASE 4",
+        "place": "Dallas",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 178,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "CHATTAHOOCHEE AVE TOWNHOMES",
+        "place": "Atlanta",
+        "product": "TH",
+        "stage": "Filed",
+        "units": 37,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Orion Park Townhomes",
+        "place": "Hampton",
+        "product": "TH",
+        "stage": "Filed",
+        "units": 152,
+        "estimated": true,
+        "record": "1 filing"
+      }
+    ],
+    "AUS": [
+      {
+        "name": "LAGOS AUSTIN SECTION 2 PHASE 3",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 105,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Sunfield Phase 6 Section 3B",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 145,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Cearley Community Subdivision Construction Plans",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 123,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Colony Park Phase 1",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 276,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "West Bella Fortuna Phase 2 Final Plat",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 103,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Eastwood Section 3",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 78,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Sun Chase Mirador Phase 1 Section 1",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 184,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Skyline 2D Phase 3 Construction Plans",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 103,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Airport Gateway Apartments",
+        "place": "Travis County",
+        "product": "MF",
+        "stage": "Site work",
+        "units": 592,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Sunfield Phase 7 Preliminary Plan",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 1129,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Sun Chase Phase One Preliminary Revision 2",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 1013,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Saddle Ridge at Wildhorse Ranch Section 1",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 171,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Whisper Valley Village 1, Phase 8C",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 633,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Fuchs Grove Phase 1",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 199,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Lagos Section 2 PP",
+        "place": "Travis County",
+        "product": "SFD",
+        "stage": "Complete",
+        "units": 696,
+        "estimated": false,
+        "record": "1 filing"
+      }
+    ],
+    "CLT": [
+      {
+        "name": "Childers Park",
+        "place": "Cabarrus County",
+        "product": "Mixed",
+        "stage": "Approved",
+        "units": 387,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "Kingston on Providence",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 84,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Main Street Station",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 117,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Amavi",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 136,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Rogers Pond",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 124,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Trinity Gardens",
+        "place": "Cabarrus County",
+        "product": "MF",
+        "stage": null,
+        "units": 114,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "Providence Place",
+        "place": "Cabarrus County",
+        "product": "SFD",
+        "stage": null,
+        "units": 12,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "SHERWOOD FOREST",
+        "place": "Mecklenburg County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 70,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "HUNTINGTON GREEN",
+        "place": "Mecklenburg County",
+        "product": "SFD",
+        "stage": null,
+        "units": 405,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "SHEPHERDS VINEYARD",
+        "place": "Mecklenburg County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 230,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "DOGWOOD ESTATES",
+        "place": "Mecklenburg County",
+        "product": "SFD",
+        "stage": null,
+        "units": 35,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Hedgecliff Towns",
+        "place": "Cabarrus County",
+        "product": "TH",
+        "stage": null,
+        "units": 171,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "Harrison Park",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 203,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Camberley",
+        "place": "Union County",
+        "product": "SFD",
+        "stage": "Built",
+        "units": 149,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "South Emerson Hills Apartment Homes",
+        "place": "Cabarrus County",
+        "product": "MF",
+        "stage": null,
+        "units": 270,
+        "estimated": false,
+        "record": "Site plan"
+      }
+    ],
+    "HOU": [
+      {
+        "name": "VENETAIN ESTATES",
+        "place": "Montgomery County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 15,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "GRAND PRAIRIE HIGHLANDS RESERVE NO 1",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 300,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "SUNTERRA LAKES - HOME BUILDING",
+        "place": "Waller County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 77,
+        "estimated": true,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "MAHARAJ PROPERTIES",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 300,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "JONES CREEK RESERVE AT MCCRARY MEADOWS - HOME BUILDING",
+        "place": "Fort Bend County",
+        "product": "SFD",
+        "stage": "Plat in review",
+        "units": 179,
+        "estimated": false,
+        "record": "20 linked filings"
+      },
+      {
+        "name": "COPIA PINES SEC 1",
+        "place": "Montgomery County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 62,
+        "estimated": true,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "FULSHEAR LAKES LAKESIDE PARK SECTION 7",
+        "place": "Fort Bend County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 42,
+        "estimated": true,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "CHAMPIONS OAK SUBDIVISION",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Plat in review",
+        "units": 75,
+        "estimated": false,
+        "record": "8 linked filings"
+      },
+      {
+        "name": "MAGNOLIA TRAILS SUBDIVISION",
+        "place": "Fort Bend County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 182,
+        "estimated": true,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "KONEC PROPERTIES",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 300,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "THE GEORGE - HOME BUILDING",
+        "place": "Fort Bend County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 22,
+        "estimated": true,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "ROBINS LANDING SECTION 1 AND 15 SANITARY SEWER ALONG TIDWEL",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Plat in review",
+        "units": 104,
+        "estimated": false,
+        "record": "7 linked filings"
+      },
+      {
+        "name": "AZALEA SEC 1",
+        "place": "Waller County",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 300,
+        "estimated": true,
+        "record": "5 linked filings"
+      },
+      {
+        "name": "HC WCID NO 36 BARBARA MAE LIFT STATION",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 300,
+        "estimated": true,
+        "record": "1 filing"
+      },
+      {
+        "name": "Granite Village Mobile Home Park",
+        "place": "Harris County",
+        "product": "SFD",
+        "stage": "Plat recorded",
+        "units": 237,
+        "estimated": false,
+        "record": "17 linked filings"
+      }
+    ],
+    "HSV": [
+      {
+        "name": "SPRAGINS COVE PH 2",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 25,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "OAK FOREST PH 4 AT MAGNOLIA SPRINGS",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 46,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "MULLINS BEND PH 3",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 52,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "HIDDEN RIVER PH 2",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 21,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "CROWN POINTE PH VIII",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 29,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "TOWN MADISON BUSINESS PARK PH 2",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 21,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "WOOD TRAIL SUB PHASE 2",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 49,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "RIVER BEND VIII",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 11,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "TUSKEGEE EOC & HSS S/D",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 35,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "CROWN POINTE PHASE VII",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 50,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "TOWN MADISON PH 12",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 15,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "WALKERS HILL PH 4",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 45,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "CHIMNEY CREEK PH 3",
+        "place": "Madison County",
+        "product": null,
+        "stage": "Approved",
+        "units": 32,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "HIGH PARK ESTATES PHASE 4 AT MOUNTAIN PRESERVE",
+        "place": null,
+        "product": "SFD",
+        "stage": "In review",
+        "units": 35,
+        "estimated": false,
+        "record": "Preliminary plat"
+      },
+      {
+        "name": "Wilson Cove Willows Ph. 2",
+        "place": null,
+        "product": "SFD",
+        "stage": "In review",
+        "units": 51,
+        "estimated": false,
+        "record": "Preliminary plat"
+      }
+    ],
+    "LAS": [
+      {
+        "name": "CLV Tract Subdivision 156036 (Mariner Development LLC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 22,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 147092 (ADAVEN HOMES LLC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 37,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 148067 (Woodside Homes of Nevada, LLC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 127,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 150006 (Richmond American Homes of Nevada, Inc.)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 57,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 162027 (D R HORTON INC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 165,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 151089 (D R HORTON INC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 60,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 148034 (D R HORTON INC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 29,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 147082 (Richmond American Homes of Nevada, Inc.)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 32,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 149027 (GREYSTONE NEVADA LLC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 25,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 124096 (Richmond American Homes of Nevada, Inc.)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 11,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 139070 (Lennar)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 192,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "Paul Robeson",
+        "place": "North Las Vegas",
+        "product": "SFD",
+        "stage": "Permitted",
+        "units": 23,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 147029 (GREYSTONE NEVADA LLC)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 103,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 126014 (Richmond American Homes of Nevada, Inc.)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 48,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      },
+      {
+        "name": "CLV Tract Subdivision 133056 (U S HOME CORPORATION)",
+        "place": "Las Vegas",
+        "product": "SFD",
+        "stage": null,
+        "units": 93,
+        "estimated": false,
+        "record": "Building permits, rolled up by tract"
+      }
+    ],
+    "NSH": [
+      {
+        "name": "Nexus Tennessee (Various residential phases have final approval)",
+        "place": "Sumner County",
+        "product": "MF",
+        "stage": "Permitted",
+        "units": 900,
+        "estimated": false,
+        "record": "Final site plan"
+      },
+      {
+        "name": "Windsong",
+        "place": "Sumner County",
+        "product": "MF",
+        "stage": "Permitted",
+        "units": 44,
+        "estimated": false,
+        "record": "Final site plan"
+      },
+      {
+        "name": "Disciples House",
+        "place": "Davidson County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 76,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "Little Goose Landing",
+        "place": "Trousdale County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 72,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "Skyview Terrace Apartments",
+        "place": "Robertson County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 48,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "St. Blaise Townhomes",
+        "place": "Sumner County",
+        "product": "TH",
+        "stage": "Approved",
+        "units": 41,
+        "estimated": false,
+        "record": "Final site plan"
+      },
+      {
+        "name": "Liberty Branch Townhomes",
+        "place": "Sumner County",
+        "product": "Mixed",
+        "stage": "In review",
+        "units": 134,
+        "estimated": false,
+        "record": "Development project"
+      },
+      {
+        "name": "Jefferson Greene",
+        "place": "Davidson County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 60,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "LEGACY POINTE",
+        "place": "Maury County",
+        "product": "Mixed",
+        "stage": "Approved",
+        "units": 1600,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Twin Eagles 15B, Section 5",
+        "place": "Sumner County",
+        "product": "Mixed",
+        "stage": "In review",
+        "units": 15,
+        "estimated": false,
+        "record": "Preliminary plat"
+      },
+      {
+        "name": "Greensboro Village",
+        "place": "Sumner County",
+        "product": null,
+        "stage": "Approved",
+        "units": 150,
+        "estimated": false,
+        "record": "Development project"
+      },
+      {
+        "name": "The Knoll at Fairvue",
+        "place": "Sumner County",
+        "product": "TH",
+        "stage": "Permitted",
+        "units": 211,
+        "estimated": false,
+        "record": "Final site plan"
+      },
+      {
+        "name": "AUGUST PARK — Phase",
+        "place": "Williamson County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 166,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Red River Villas",
+        "place": "Sumner County",
+        "product": "MF",
+        "stage": "Approved",
+        "units": 17,
+        "estimated": false,
+        "record": "Final site plan"
+      },
+      {
+        "name": "KINGSLEY PLACE",
+        "place": "Maury County",
+        "product": "MF",
+        "stage": "Approved",
+        "units": 396,
+        "estimated": false,
+        "record": "Plat"
+      }
+    ],
+    "PHX": [
+      {
+        "name": "Sheffield Place",
+        "place": "Gilbert",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 67,
+        "estimated": false,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "Prestige on 64th",
+        "place": "Phoenix",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 192,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Quail Ranch",
+        "place": "San Tan Valley",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 955,
+        "estimated": false,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "San Francisco at Prasada, Redwood Valley at Prasada, Cascades at Prasada; Fulton Homes at Prasada",
+        "place": "Goodyear",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 825,
+        "estimated": false,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "Preserve at the Highline",
+        "place": "Phoenix",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 61,
+        "estimated": false,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "Queen Creek Station-Jorde",
+        "place": "Maricopa County",
+        "product": "SFD",
+        "stage": "Filed",
+        "units": 474,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "PROJECT 4",
+        "place": "Mesa",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 345,
+        "estimated": false,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "Quarter at Palm Scottsdale",
+        "place": "Surprise",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 133,
+        "estimated": false,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "Mesquite Mountain Ranch at Frontera; Frontera",
+        "place": "Surprise",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 83,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Estates at Haciendas at White Peak",
+        "place": "Peoria",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 55,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "The Bower Union",
+        "place": "Phoenix",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 13,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "La Privada",
+        "place": "Goodyear",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 58,
+        "estimated": false,
+        "record": "1 filing"
+      },
+      {
+        "name": "Red Rock Village VIA Unit 2",
+        "place": "Red Rock",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 62,
+        "estimated": false,
+        "record": "3 linked filings"
+      },
+      {
+        "name": "TAVOLO AT SOLEO; WARE FARMS",
+        "place": "San Tan Valley",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 1435,
+        "estimated": false,
+        "record": "2 linked filings"
+      },
+      {
+        "name": "The Foothills Collection at Palomino Ranch",
+        "place": "Maricopa",
+        "product": "SFD",
+        "stage": "Site work",
+        "units": 130,
+        "estimated": false,
+        "record": "1 filing"
+      }
+    ],
+    "TPA": [
+      {
+        "name": "JACARANDA APARTMENTS MODIFICATION",
+        "place": "Sarasota County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 260,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "WINDHORST COMMONS",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 23,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "BERRY BAY VILLAGE R",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 77,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Council Growers Phase 7D",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 72,
+        "estimated": false,
+        "record": "Preliminary plat"
+      },
+      {
+        "name": "Roma Heights",
+        "place": "Pinellas County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 76,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "Meadow Pointe East (Parcel NN) Phasing Plan - NS-MOD",
+        "place": "Pasco County",
+        "product": "MF",
+        "stage": "Approved",
+        "units": 99,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "WATERSET- WOLF CREEK PHASE C",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 370,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "THE ESTUARY AT TWO RIVERS PRESERVE",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": null,
+        "units": 273,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Cypress Ridge Phase 3 Construction Plan",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": null,
+        "units": 389,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Hammock Bay Subdivision fka Apollo Beach Subdivision",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 50,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "Durant Ridge Subdivision",
+        "place": "Hillsborough County",
+        "product": "SFD",
+        "stage": "Approved",
+        "units": 30,
+        "estimated": false,
+        "record": "Plat"
+      },
+      {
+        "name": "BLOOMINGDALE WATSON TOWNHOMES",
+        "place": "Hillsborough County",
+        "product": "TH",
+        "stage": "Approved",
+        "units": 90,
+        "estimated": false,
+        "record": "Preliminary plat"
+      },
+      {
+        "name": "Egret on Union",
+        "place": "Pinellas County",
+        "product": "MF",
+        "stage": "In review",
+        "units": 88,
+        "estimated": false,
+        "record": "LIHTC application"
+      },
+      {
+        "name": "Vincent Denton Apartments - Non-Sub Modification",
+        "place": "Pasco County",
+        "product": "MF",
+        "stage": "Approved",
+        "units": 39,
+        "estimated": false,
+        "record": "Site plan"
+      },
+      {
+        "name": "HoM at River Hills",
+        "place": "Hillsborough County",
+        "product": "MF",
+        "stage": "Approved",
+        "units": 330,
+        "estimated": false,
+        "record": "Site plan"
+      }
+    ]
+  }
+}

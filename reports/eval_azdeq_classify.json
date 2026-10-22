@@ -1,0 +1,115 @@
+{
+  "surface": "azdeq_classify",
+  "model": "claude-haiku-4-5",
+  "provider": "replay",
+  "run_at": "2026-10-03T00:00:00+00:00",
+  "cases_total": 65,
+  "cases_passed": 55,
+  "pass_rate": 0.8462,
+  "bucket_passed": 56,
+  "bucket_pass_rate": 0.8615,
+  "business_miss": 7,
+  "severity_counts": {
+    "pass": 55,
+    "cosmetic_miss": 1,
+    "business_miss": 7,
+    "overcommit": 1,
+    "abstain_miss": 1,
+    "validation_fail": 0
+  },
+  "class_pass_rates": {
+    "commercial": 1.0,
+    "mixed": 0.5,
+    "multifamily": 0.8333,
+    "single_family": 0.8125,
+    "townhome": 0.8,
+    "unknown": 0.8
+  },
+  "baseline_pass_rate": 0.8462,
+  "regression_detected": true,
+  "alert_severity": "critical",
+  "alert_message": "7 business_miss (crosses for_sale<->rental)",
+  "exit_code": 1,
+  "cost_usd": 0.0,
+  "site_row": {
+    "metro": "Phoenix",
+    "n": 65,
+    "exact": "84.6%",
+    "exactN": 55,
+    "bucket": "86.2%",
+    "bucketN": 56,
+    "miss": 7
+  },
+  "failures": [
+    {
+      "severity": "business_miss",
+      "input_row_id": "10015",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "11512",
+      "expected": "single_family",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "12836",
+      "expected": "multifamily",
+      "actual": "single_family",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "13750",
+      "expected": "townhome",
+      "actual": "multifamily",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "13790",
+      "expected": "mixed",
+      "actual": "commercial",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "8884",
+      "expected": "single_family",
+      "actual": "commercial",
+      "error": null
+    },
+    {
+      "severity": "business_miss",
+      "input_row_id": "9639",
+      "expected": "multifamily",
+      "actual": "mixed",
+      "error": null
+    },
+    {
+      "severity": "overcommit",
+      "input_row_id": "9322",
+      "expected": "unknown",
+      "actual": "commercial",
+      "error": null
+    },
+    {
+      "severity": "abstain_miss",
+      "input_row_id": "11422",
+      "expected": "mixed",
+      "actual": "unknown",
+      "error": null
+    },
+    {
+      "severity": "cosmetic_miss",
+      "input_row_id": "10602",
+      "expected": "townhome",
+      "actual": "single_family",
+      "error": null
+    }
+  ]
+}

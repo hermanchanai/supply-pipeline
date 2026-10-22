@@ -1,0 +1,56 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "exceededTransferLimit": true,
+ "features": [
+  {
+   "attributes": {
+    "Permit__": "2023047626",
+    "Permit_Type_Description": "Building Residential - New",
+    "Permit_Subtype_Description": "Multifamily, Townhome",
+    "Parcel": "071010L01100CO",
+    "Date_Entered": 1689829200000,
+    "Date_Issued": 1705989600000,
+    "Const_Cost": 210158,
+    "Address": "928 CHLOE CIR",
+    "City": "NASHVILLE",
+    "State": "TN",
+    "Subdivision_Lot": "UNIT 11 HIDDEN HILLS AT NORTH POINTE",
+    "Per_Ty": "CARN",
+    "Per_SubTy": "CAA03R301",
+    "IVR_Trk_": 4351258,
+    "Purpose": "per master permit 2022024514, to construct townhome unit 11 with 1537 sf living area, 457 sf attached garage and 36 sf porch area.",
+    "Council_Dist": 2,
+    "Census_Tract": 37012701,
+    "Lon": -86.78671507,
+    "Lat": 36.2116619,
+    "ObjectId": 1,
+    "ZIP": "37207"
+   }
+  },
+  {
+   "attributes": {
+    "Permit__": "2023047631",
+    "Permit_Type_Description": "Building Residential - New",
+    "Permit_Subtype_Description": "Multifamily, Townhome",
+    "Parcel": "071010L01300CO",
+    "Date_Entered": 1689829200000,
+    "Date_Issued": 1705989600000,
+    "Const_Cost": 248592,
+    "Address": "924 CHLOE CIR",
+    "City": "NASHVILLE",
+    "State": "TN",
+    "Subdivision_Lot": "UNIT 13 HIDDEN HILLS AT NORTH POINTE",
+    "Per_Ty": "CARN",
+    "Per_SubTy": "CAA03R301",
+    "IVR_Trk_": 4351262,
+    "Purpose": "per master permit 2022024514, to construct townhome unit 13 with 1856 sf living area, 446 sf attached garage and 42 sf porch area.",
+    "Council_Dist": 2,
+    "Census_Tract": 37012701,
+    "Lon": -86.78673254999998,
+    "Lat": 36.2118622,
+    "ObjectId": 3,
+    "ZIP": "37207"
+   }
+  }
+ ]
+}
